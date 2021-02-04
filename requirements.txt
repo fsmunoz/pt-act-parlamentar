@@ -1,0 +1,9 @@
+requests==2.22.0
+bs4==0.0.1
+pandas==1.1.0
+geopandas==0.8.2
+geoplot==0.4.1
+matplotlib==3.2.2
+seaborn==0.10.1
+numpy==1.17.2 
+pyproj==3.0.0.post1
