@@ -1,0 +1,38 @@
+{
+  "l13": {
+    "mds_13": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "mds_13",
+          "mime_prefix": "application/papermill.record/"
+        },
+        "filenames": {
+          "image/png": "/home/frmuno/src/pt-act-parlamentar/parlamento2015-21/_build/jupyter_execute/l13_44_1.png"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "<Figure size 576x576 with 1 Axes>",
+        "application/papermill.record/image/png": null
+      }
+    }
+  },
+  "l14": {
+    "mds_14": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "mds_14",
+          "mime_prefix": "application/papermill.record/"
+        },
+        "filenames": {
+          "image/png": "/home/frmuno/src/pt-act-parlamentar/parlamento2015-21/_build/jupyter_execute/l14_53_1.png"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "<Figure size 576x576 with 1 Axes>",
+        "application/papermill.record/image/png": null
+      }
+    }
+  }
+}

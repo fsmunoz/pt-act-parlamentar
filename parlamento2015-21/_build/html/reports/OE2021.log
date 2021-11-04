@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+parties   = ['BE', 'PCP','PS', 'PAN','PSD','IL','CDS-PP', 'CH']
+#parties   = ['BE', 'PCP', 'PEV', 'PS']
+
+cmap=ListedColormap(sns.color_palette("pastel").as_hex())
+colors=["#DFE38C","#F59B9B","black","#7FE7CC" ]
+cmap = ListedColormap(colors)
+
+spn = 0
+fig, axes = plt.subplots(nrows=8, ncols=8, figsize=(20, 20))
+axes = axes.ravel()
+for party in parties:
+    for p2 in parties:
+        sns.set_style("white")
+        subp = gpsubs[gpsubs['GP'] == p2][[party]]
+        sp = subp.fillna("Ausência").apply(pd.Series.value_counts)
+        d = pd.DataFrame(columns=["GP","Abstenção", "Contra", "Ausência","Favor"]).merge(sp.T, how="right").fillna(0)
+        d["GP"] = party
+        d = d.set_index("GP")
+        d = d[["Abstenção", "Contra", "Ausência","Favor"]]
+        if p2 != party:
+            sns.despine(left=True, bottom=True)
+            if spn < 8:
+                d.plot(kind='barh', stacked=True,width=400,colormap=cmap, title=p2,use_index=False,ax=axes[spn])
+            else:
+                d.plot(kind='barh', stacked=True,width=400,colormap=cmap,use_index=False,ax=axes[spn])
+            axes[spn].get_legend().remove()
+            plt.ylim(-4.5, axes[spn].get_yticks()[-1] + 0.5)
+        else:
+            axes[spn].set_xticks([])
+            if spn < 8:
+                axes[spn].set_title(p2)
+        axes[spn].set_yticks([])
+        ## Why? Who knows? Certainly not me. This is likely a side-effect of using a single axis through .ravel
+        if spn%8 == 0:
+            if spn != 0:
+                text = axes[spn].text(-4,0,party,rotation=90)
+            else:
+                text = axes[spn].text(-0.17,0.5,party,rotation=90)
+        #print(party, p2)
+        #print(d)
+        #print("-------------------------_")
+        spn += 1
+
+#axes[11].set_axis_off()
+text = axes[0].text(4,1.3,"Quem propôs",rotation=0,fontsize=22)
+text = axes[0].text(-0.4,-4,"Como votaram",rotation=90,fontsize=22)
+
+#fig.tight_layout()
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_239769/3580787022.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     12[0m     [0;32mfor[0m [0mp2[0m [0;32min[0m [0mparties[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     13[0m         [0msns[0m[0;34m.[0m[0mset_style[0m[0;34m([0m[0;34m"white"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 14[0;31m         [0msubp[0m [0;34m=[0m [0mgpsubs[0m[0;34m[[0m[0mgpsubs[0m[0;34m[[0m[0;34m'GP'[0m[0;34m][0m [0;34m==[0m [0mp2[0m[0;34m][0m[0;34m[[0m[0;34m[[0m[0mparty[0m[0;34m][0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     15[0m         [0msp[0m [0;34m=[0m [0msubp[0m[0;34m.[0m[0mfillna[0m[0;34m([0m[0;34m"Ausência"[0m[0;34m)[0m[0;34m.[0m[0mapply[0m[0;34m([0m[0mpd[0m[0;34m.[0m[0mSeries[0m[0;34m.[0m[0mvalue_counts[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     16[0m         [0md[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mDataFrame[0m[0;34m([0m[0mcolumns[0m[0;34m=[0m[0;34m[[0m[0;34m"GP"[0m[0;34m,[0m[0;34m"Abstenção"[0m[0;34m,[0m [0;34m"Contra"[0m[0;34m,[0m [0;34m"Ausência"[0m[0;34m,[0m[0;34m"Favor"[0m[0;34m][0m[0;34m)[0m[0;34m.[0m[0mmerge[0m[0;34m([0m[0msp[0m[0;34m.[0m[0mT[0m[0;34m,[0m [0mhow[0m[0;34m=[0m[0;34m"right"[0m[0;34m)[0m[0;34m.[0m[0mfillna[0m[0;34m([0m[0;36m0[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'gpsubs' is not defined
+NameError: name 'gpsubs' is not defined
+

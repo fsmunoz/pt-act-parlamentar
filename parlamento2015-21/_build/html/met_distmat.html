@@ -1,0 +1,1262 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distâncias e matrizes &#8212; Proximidades e distâncias: análise da actividade parlamentar, 2015-2019</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabulator.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fsm.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/tabulator.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Métodos de clustering" href="met_cluster.html" />
+    <link rel="prev" title="Em maior detalhe" href="metodo_det.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/pperdidos_2.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Proximidades e distâncias: análise da actividade parlamentar, 2015-2019</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Início
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Introdução
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="actual.html">
+   1. O que é novo, e o que se mantém
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_metodo.html">
+   2. Metodologia e resultados: visão geral
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Análise das legislaturas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="l13.html">
+   3. A XIII Legislatura: o princípio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="l14.html">
+   4. Continuidade e fim: a XIV Legislatura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comp_anos.html">
+   5. As votações no tempo: comparação das legislaturas e anos
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Os Orçamentos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="OE2021.html">
+   6. Orçamento de Estado de 2021
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Notas finais
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="conc.html">
+   7. Conclusão
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bib.html">
+   8. Biliografia
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Apêndices
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dados.html">
+   Os dados
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="metodo_det.html">
+   Em maior detalhe
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Distâncias e matrizes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="met_cluster.html">
+     Métodos de
+     <em>
+      clustering
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/met_distmat.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/fsmunoz/pt-act-parlamentar"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/fsmunoz/pt-act-parlamentar/issues/new?title=Issue%20on%20page%20%2Fmet_distmat.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fsmunoz/pt-act-parlamentar/jbook?urlpath=tree/parlamento2015-21/met_distmat.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uma-votacao-n-1">
+   Uma votação,
+   <span class="math notranslate nohighlight">
+    \( n = 1 \)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duas-votacoes-n-2">
+   Duas votações,
+   <span class="math notranslate nohighlight">
+    \( n = 2 \)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tres-votacoes-n-3">
+   Três votações,
+   <span class="math notranslate nohighlight">
+    \( n = 3 \)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mais-de-tres-votacoes-n-3">
+   Mais de três votações,
+   <span class="math notranslate nohighlight">
+    \( n &gt; 3 \)
+   </span>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="distancias-e-matrizes">
+<h1>Distâncias e matrizes<a class="headerlink" href="#distancias-e-matrizes" title="Permalink to this headline">¶</a></h1>
+<p>A matriz de distância é feita através da utilização da função <code class="docutils literal notranslate"><span class="pre">pdist</span></code>; como já mencionado a distância euclidiana entre dois pontos <span class="math notranslate nohighlight">\(p\)</span> e <span class="math notranslate nohighlight">\(q\)</span> é <span class="math notranslate nohighlight">\( d\left( p,q\right) = \sqrt {\sum _{i=1}^{n}  \left( q_{i}-p_{i}\right)^2 }\)</span>, para <span class="math notranslate nohighlight">\(n\)</span> dimensões. De forma a facilitar a intuição de como esta distância é aplicada ao registo de votações vamos, passo a passo, analisar um caso simplificado (o que nos serve também de forma de validação indirecta do processo).</p>
+<p>Vamos criar um cenário com três partidos, com nomes que reflectem o seu perfil de votação:</p>
+<ul class="simple">
+<li><p>O Partido Favorável vota a favor.</p></li>
+<li><p>O Partido Abstencionista abstem-se (pelo menos até certo ponto).</p></li>
+<li><p>O Partido do Contra vota contra.</p></li>
+</ul>
+<div class="section" id="uma-votacao-n-1">
+<h2>Uma votação, <span class="math notranslate nohighlight">\( n = 1 \)</span><a class="headerlink" href="#uma-votacao-n-1" title="Permalink to this headline">¶</a></h2>
+<p>Começemos por uma única votação, onde cada um dos partidos segue a sua linha programática:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">v1_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>
+<span class="n">v1_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Com uma única votação o número de dimensões é de <span class="math notranslate nohighlight">\(n = 1\)</span> e é bastante intuitivo que a distância entre eles é a  <em>norma</em>:<span class="math notranslate nohighlight">\( d\left( x,y\right)   = | x - y |\)</span>; entre 1 e 0 a distância é 1, entre 1 e -1 a distância é 2, etc. Para <span class="math notranslate nohighlight">\( n = 1 \)</span> a distância euclidiana é equivalente à norma, pois <span class="math notranslate nohighlight">\( \sqrt{\left( q - p\right)^2} = | q - p | \)</span>, como pode ser observado quando medidas a distância entre eles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="c1">## We could also sue the array directly, e.g.</span>
+<span class="c1">## print(&quot;Distance from&quot; , a[0][0] , &quot;and&quot; , a[1][0],&quot;=&quot;,math.sqrt((a[0][0]-a[1][0]) ** 2))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distance from&quot;</span><span class="p">,</span> <span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> 
+      <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">][</span><span class="s2">&quot;v1&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">][</span><span class="s2">&quot;v1&quot;</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distance from&quot;</span><span class="p">,</span> <span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> 
+      <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">][</span><span class="s2">&quot;v1&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">][</span><span class="s2">&quot;v1&quot;</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distance from&quot;</span><span class="p">,</span> <span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> 
+      <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">][</span><span class="s2">&quot;v1&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">v1_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">][</span><span class="s2">&quot;v1&quot;</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance from F and A = 1.0
+Distance from F and C = 2.0
+Distance from A and C = 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Temos a distância entre os três possíveis pares: a distância entre <em>F</em> e <em>A</em> é idêntica à distância entre <em>A</em> e <em>F</em>. Isto é importante porque ajuda a explicar a diferença entre a forma “condensada” e forma “quadrada”. A função <code class="docutils literal notranslate"><span class="pre">pdist</span></code> retorna a distância entre os vários pares na forma <em>condensada</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdist</span><span class="p">(</span><span class="n">v1_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 1.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Estes são os mesmos valores que obtivemos de forma manual, e é isso que a função faz: calcula uma determinada distância (euclidiana, neste caso e por omissão) entre todos os pares possíveis, sem que seja necessário especificarmos todas as combinações possíveis.</p>
+<p>Este formato condensado não é o que permite uma leitura mais imediata, e para tal existe a função <code class="docutils literal notranslate"><span class="pre">squareform</span></code> que apresenta os mesmos resultados mas numa matriz simétrica:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v1_df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 2.],
+       [1., 0., 1.],
+       [2., 1., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Em formato tabular torna-se ainda mais claro… e isto é exactmante a matriz de distância usada para o mapa térmico</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1_distmat</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v1</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">v1_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">v1_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">v1_distmat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>F</th>
+      <th>A</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Geometricamente temos pontos numa recta: uma análise das distâncias entre os três partidos com base no histórico de votação seria simples de visualizar com base na posição desses pontos:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s2">&quot;gold&quot;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">v1_df</span><span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_12_0.png" src="_images/met_distmat_12_0.png" />
+</div>
+</div>
+<p>Com base na matriz de distância contruimos o mapa térmico de forma muito simples:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">v1_distmat</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">square</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_14_0.png" src="_images/met_distmat_14_0.png" />
+</div>
+</div>
+<p>…e o agrupamento com base nessa matriz:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1_distmat_link</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v1_df</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span>
+    <span class="n">v1_distmat</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">row_linkage</span><span class="o">=</span><span class="n">v1_distmat_link</span><span class="p">,</span>
+    <span class="n">col_linkage</span><span class="o">=</span><span class="n">v1_distmat_link</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_16_0.png" src="_images/met_distmat_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="duas-votacoes-n-2">
+<h2>Duas votações, <span class="math notranslate nohighlight">\( n = 2 \)</span><a class="headerlink" href="#duas-votacoes-n-2" title="Permalink to this headline">¶</a></h2>
+<p>Usando a mesma abordagem (agora sem necessidade de explicações adicionais) adicionamos mais uma votação, sempre em linha com o perfil fixo de votos de cada um: cada partido passa a ter dois votos, logo temos duas dimensões:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v2</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">v2_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="s2">&quot;v2&quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>
+<span class="n">v2_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+      <th>v2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A distância euclidiana é agora feita de forma mais genérica: a raíz quadrada da soma do quadrado das diferenças: para a primeira diferença isto significa, passo a passo e para <span class="math notranslate nohighlight">\(q=F\)</span> e <span class="math notranslate nohighlight">\(p=A\)</span>:</p>
+<p><span class="math notranslate nohighlight">\( d\left(q,p\right)   = \sqrt {\sum _{i=1}^{n}  \left( q_{i}-p_{i}\right)^2 } = \sqrt{\left( q_{1}-p_{1}\right)^2  + \left( q_{2}-p_{2}\right)^2 } = \sqrt{\left( 1 - 0\right)^2 + \left( 1 - 0\right)^2} = \sqrt{ 1^2  + 1^2 } = \sqrt{1+1} = \sqrt{2} \approx  1.4142135623730951 \)</span></p>
+<p>E de facto:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v2_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">],</span><span class="n">v2_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v2_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">],</span><span class="n">v2_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v2_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span><span class="n">v2_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4142135623730951
+2.8284271247461903
+1.4142135623730951
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tal como antes é idêntico ao resultado de <code class="docutils literal notranslate"><span class="pre">pdist</span></code>, tanto na sua forma condensada como quadrada:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pdist:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pdist</span><span class="p">(</span><span class="n">v2</span><span class="p">),</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;squareform:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v2</span><span class="p">)))</span>
+<span class="n">v2_distmat</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v2</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">v2_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">v2_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">v2_distmat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pdist:
+ [1.41421356 2.82842712 1.41421356] 
+
+squareform:
+ [[0.         1.41421356 2.82842712]
+ [1.41421356 0.         1.41421356]
+ [2.82842712 1.41421356 0.        ]]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>F</th>
+      <th>A</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>0.000000</td>
+      <td>1.414214</td>
+      <td>2.828427</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>1.414214</td>
+      <td>0.000000</td>
+      <td>1.414214</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>2.828427</td>
+      <td>1.414214</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Com duas votações temos <span class="math notranslate nohighlight">\( n = 2 \)</span> e conseguimos ver os pontos num espaço cartesiano em <span class="math notranslate nohighlight">\( \mathbb{R}^2 \)</span> (um plano).</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v2_df</span><span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">],</span> <span class="n">v2_df</span><span class="p">[</span><span class="s2">&quot;v2&quot;</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_24_0.png" src="_images/met_distmat_24_0.png" />
+</div>
+</div>
+<p>A matriz de distância seria neste caso, como no anterior, desnecessária (em <span class="math notranslate nohighlight">\( \mathbb{R}^2 \)</span> as distâncias entre os partidos são óbvias por facilmente visualizáveis); a forma de a construir é idêntica:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">v2_distmat</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">square</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_26_0.png" src="_images/met_distmat_26_0.png" />
+</div>
+</div>
+<p>… e o <em>clustermap</em> que agrega distâncias e agrupamento num único gráfico:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v2_distmat_link</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v2_df</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span>
+    <span class="n">v2_distmat</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">row_linkage</span><span class="o">=</span><span class="n">v2_distmat_link</span><span class="p">,</span>
+    <span class="n">col_linkage</span><span class="o">=</span><span class="n">v2_distmat_link</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_28_0.png" src="_images/met_distmat_28_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="tres-votacoes-n-3">
+<h2>Três votações, <span class="math notranslate nohighlight">\( n = 3 \)</span><a class="headerlink" href="#tres-votacoes-n-3" title="Permalink to this headline">¶</a></h2>
+<p>Este é o último caso onde a visualização pode ser feita de forma directa. Consideremos:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v3</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">v3_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="s2">&quot;v2&quot;</span><span class="p">,</span> <span class="s2">&quot;v3&quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>
+<span class="n">v3_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+      <th>v2</th>
+      <th>v3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A distância é calculada da mesma forma:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v3_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">],</span><span class="n">v3_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v3_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">],</span><span class="n">v3_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v3_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span><span class="n">v3_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7320508075688772
+3.4641016151377544
+1.7320508075688772
+</pre></div>
+</div>
+</div>
+</div>
+<p>… bem como a matriz de distância:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pdist:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pdist</span><span class="p">(</span><span class="n">v3</span><span class="p">),</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;squareform:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v3</span><span class="p">)))</span>
+<span class="n">v3_distmat</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v3</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">v3_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">v3_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">v3_distmat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pdist:
+ [1.73205081 3.46410162 1.73205081] 
+
+squareform:
+ [[0.         1.73205081 3.46410162]
+ [1.73205081 0.         1.73205081]
+ [3.46410162 1.73205081 0.        ]]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>F</th>
+      <th>A</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>0.000000</td>
+      <td>1.732051</td>
+      <td>3.464102</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>1.732051</td>
+      <td>0.000000</td>
+      <td>1.732051</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>3.464102</td>
+      <td>1.732051</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>e o correspondente mapa térmico:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">v3_distmat</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">square</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_36_0.png" src="_images/met_distmat_36_0.png" />
+</div>
+</div>
+<p>O <em>clustermap</em> apresenta os mesmos valores, mas reordenando colunas e linhas de forma a apresentar o resultado do agrupamento; note-se que, neste caso, não é apresentado nenhum agrupamento entre 2 dos partidos pois todos divergem de forma equidistante, constituindo três grupos separados:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v3_distmat_link</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v3_df</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span>
+    <span class="n">v3_distmat</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">row_linkage</span><span class="o">=</span><span class="n">v3_distmat_link</span><span class="p">,</span>
+    <span class="n">col_linkage</span><span class="o">=</span><span class="n">v3_distmat_link</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_38_0.png" src="_images/met_distmat_38_0.png" />
+</div>
+</div>
+<p>Estamos agora em <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span>, e para visualizar podemos usar uma projecção tridimensional:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v3_df</span><span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">],</span> <span class="n">v3_df</span><span class="p">[</span><span class="s2">&quot;v2&quot;</span><span class="p">],</span> <span class="n">v3_df</span><span class="p">[</span><span class="s2">&quot;v3&quot;</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_40_0.png" src="_images/met_distmat_40_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="mais-de-tres-votacoes-n-3">
+<h2>Mais de três votações, <span class="math notranslate nohighlight">\( n &gt; 3 \)</span><a class="headerlink" href="#mais-de-tres-votacoes-n-3" title="Permalink to this headline">¶</a></h2>
+<p>A partir daqui coloca-se a questão fundamental: a impossibilidade de visualizar de forma directa a distância para além das três dimensões. A distância existe e segue exactamente os mesmo passos, simplesmente não é passível de visualização, razão pela qual é necessário (agora sim) depender de formas que “reduzam” as dimensões e as tornem visualizáveis.</p>
+<p>Até agora os agrupamentos têm sido sempre iguais pois a distância é sempre linear; vamos neste último caso assumir que o Partido Abstencionista teve uma mudança de posição e passou a votar por vezes a favor e contra, embora mais contra que a favor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v4</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">v4_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">v4</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="s2">&quot;v2&quot;</span><span class="p">,</span> <span class="s2">&quot;v3&quot;</span><span class="p">,</span><span class="s2">&quot;v4&quot;</span><span class="p">,</span><span class="s2">&quot;v5&quot;</span><span class="p">,</span><span class="s2">&quot;v6&quot;</span><span class="p">,</span><span class="s2">&quot;v7&quot;</span><span class="p">,</span><span class="s2">&quot;v8&quot;</span><span class="p">,</span><span class="s2">&quot;v9&quot;</span><span class="p">,</span><span class="s2">&quot;v10&quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>
+<span class="n">v4_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+      <th>v2</th>
+      <th>v3</th>
+      <th>v4</th>
+      <th>v5</th>
+      <th>v6</th>
+      <th>v7</th>
+      <th>v8</th>
+      <th>v9</th>
+      <th>v10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A distância calculdada “manualmente”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v4_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">],</span><span class="n">v4_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v4_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">],</span><span class="n">v4_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">qx</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">qx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v4_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span><span class="n">v4_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.58257569495584
+6.324555320336759
+3.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>… e o cálculo via <code class="docutils literal notranslate"><span class="pre">pdist</span></code> e a  matriz de distância:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pdist:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pdist</span><span class="p">(</span><span class="n">v4</span><span class="p">),</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;squareform:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v4</span><span class="p">)))</span>
+<span class="n">v4_distmat</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v4</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">v4_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">v4_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">v4_distmat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pdist:
+ [4.58257569 6.32455532 3.        ] 
+
+squareform:
+ [[0.         4.58257569 6.32455532]
+ [4.58257569 0.         3.        ]
+ [6.32455532 3.         0.        ]]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>F</th>
+      <th>A</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>0.000000</td>
+      <td>4.582576</td>
+      <td>6.324555</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>4.582576</td>
+      <td>0.000000</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>6.324555</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>O mapa térmico:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">v4_distmat</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">square</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_49_0.png" src="_images/met_distmat_49_0.png" />
+</div>
+</div>
+<p>… e o dendograma, já apresentando um agrupamento com base na maior aproximação com base no registo de votação:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v4_distmat_link</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">pdist</span><span class="p">(</span><span class="n">v4_df</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span>
+    <span class="n">v4_distmat</span><span class="p">,</span>
+    <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Reds_r&quot;</span><span class="p">),</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">row_linkage</span><span class="o">=</span><span class="n">v4_distmat_link</span><span class="p">,</span>
+    <span class="n">col_linkage</span><span class="o">=</span><span class="n">v4_distmat_link</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/met_distmat_51_0.png" src="_images/met_distmat_51_0.png" />
+</div>
+</div>
+<p>E aqui pode ser observado o resultado (e a utilidade) do cálculo das distâncias e da utilização de <em>clustering</em>: ao observarmos os votos acima conseguimos, intuitivamente, determinar que o partido do <em>A</em> está mais próximo do <em>C</em>, mas fazer o mesmo para 100, 1000 ou 10000 votações seria manifestamente mais difícil.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "fsmunoz/pt-act-parlamentar",
+            ref: "jbook",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="metodo_det.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Em maior detalhe</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="met_cluster.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Métodos de <em>clustering</em></p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Frederico Muñoz<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

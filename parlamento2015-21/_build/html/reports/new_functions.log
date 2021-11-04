@@ -1,0 +1,65 @@
+Traceback (most recent call last):
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/frmuno/anaconda3/envs/jupyterbook/lib/python3.8/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from IPython.display import display
+from matplotlib.colors import ListedColormap
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import seaborn as sns
+from matplotlib import cm
+ndf = pd.DataFrame()
+#submissions_ini_nu = submissions_ini.loc[submissions_ini['unanime'] != "unanime"]
+gpsubs = submissions_ini
+cmap=ListedColormap(sns.color_palette("pastel").as_hex())
+colors=["#fdfd96",  "black","#ff6961","#77dd77", ]
+cmap = ListedColormap(colors)
+
+spn = 0
+fig, axes = plt.subplots(nrows=4, ncols=3, figsize=(20, 30))
+axes = axes.ravel()
+for party in parties:
+    sns.set_style("whitegrid")
+    subp = gpsubs[gpsubs['GP'] == party]
+    sp = subp[parties].apply(pd.Series.value_counts).fillna(0).drop([party],axis=1)
+    sp = sp.sort_values(by=['Favor','Abstenção','Contra'], ascending=False, axis=1)
+    d = sp.T
+    #f = plt.figure()
+    plt.title(party)
+    #d.plot(kind='bar', ax=f.gca(), stacked=True, title=party, colormap=cmap, ax=spn)
+    d.plot(kind='bar', stacked=True, title=party, colormap=cmap, ax=axes[spn])
+    #plt.legend(loc='center left',  bbox_to_anchor=(0.7, 0.9),)
+    axes[spn].get_legend().remove()
+    spn += 1
+
+axes[11].set_axis_off()
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_240174/3889067898.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m [0;32mimport[0m [0mseaborn[0m [0;32mas[0m [0msns[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;32mfrom[0m [0mmatplotlib[0m [0;32mimport[0m [0mcm[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mndf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mDataFrame[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0;31m#submissions_ini_nu = submissions_ini.loc[submissions_ini['unanime'] != "unanime"][0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0mgpsubs[0m [0;34m=[0m [0msubmissions_ini[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'pd' is not defined
+NameError: name 'pd' is not defined
+

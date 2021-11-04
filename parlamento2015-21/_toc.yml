@@ -1,0 +1,36 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro.ipynb
+options:  
+  numbered: False
+
+parts:
+  - caption: Introdução
+    numbered: True    
+    chapters:
+      - file: actual
+      - file: intro_metodo
+  - caption: Análise das legislaturas
+    numbered: True        
+    chapters:
+      - file: l13
+      - file: l14
+      - file: comp_anos
+  - caption: Os Orçamentos
+    numbered: True
+    chapters:
+    - file: OE2021              
+  - caption: Notas finais
+    numbered: True        
+    chapters:
+    - file: conc
+    - file: bib
+  - caption: Apêndices
+    chapters:
+    - file: dados
+    - file: metodo_det
+      sections:
+        - file: met_distmat
+        - file: met_cluster
