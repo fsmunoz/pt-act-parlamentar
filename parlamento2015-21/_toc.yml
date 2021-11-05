@@ -30,6 +30,7 @@ parts:
   - caption: Apêndices
     chapters:
     - file: dados
+    - file: dados-OE2021      
     - file: metodo_det
       sections:
         - file: met_distmat

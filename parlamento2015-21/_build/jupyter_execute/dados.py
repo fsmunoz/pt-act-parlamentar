@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Os dados
+# # Os dados das Legislaturas
 # 
 # ```{margin} _Caveat emptor!_
 # A existência de erros e omissões é uma possibilidade a não desprezar: vários foram detectados durante as fases iniciais deste projecto, e alguns nas fases finais. Dada a importância que os dados têm para todas as outras análises o impacto pode ir desde irrelevante até significativo.
@@ -358,6 +358,7 @@ all_votes=l13_table.merge(l13_table,how="outer")
 all_votes = pd.merge(l13_table, l14_table, how="outer")
 dates = pd.to_datetime(pd.Series(['20010101', '20010331']), format = '%Y%m%d')
 dates.apply(lambda x: x.strftime('%Y-%m-%d'))
+all_votes.to_json("all_votes.json", orient="records")
 
 
 # In[14]:

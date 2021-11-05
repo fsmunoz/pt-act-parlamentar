@@ -116,14 +116,16 @@ oe_df
 # Em gráfico de barras:
 # ```
 
+# ## As propostas: quantidade, aprovações, rejeições
+# 
+# Após obtermos e processarmos o ficheiro com as Propostas de Alteração podemos ter uma primeira ideia sobre a origem das propostas:
+
 # In[6]:
 
 
 oe_df.groupby('GP')[['ID']].count().sort_values(by=['ID'], axis=0, ascending=False).plot(kind="bar",stacked=True,figsize=(6,6))
 plt.show()
 
-
-# Após obtermos e processarmos o ficheiro com as Propostas de Alteração podemos ter uma primeira ideia sobre a origem das propostas:
 
 # In[7]:
 
@@ -192,6 +194,8 @@ plt.show()
 # 
 # Estes resultados podem ser relacionados com o que foi a viabilização do OE: de facto os 4 primeiros partidos por número de alterações aprovadas são os que participaram na viabilização , sendo legítimo considerar que esse facto está directamente relacionado.
 # 
+# ### Propostas aprovadas
+# 
 # E que propostas cada partido conseguiu aprovar? A utilização do título da iniciativa é aqui útil
 
 # In[10]:
@@ -208,13 +212,31 @@ for gp in approved_oe.GP.unique():
         display(gp_df)
 
 
-# ## Votações
+# ### Propostas rejeitadas
+# 
+# Da mesma forma podemos obter a lista de propostas rejeitas, por partido.
+
+# In[11]:
+
+
+from IPython.display import display, HTML
+
+approved_oe = oe_df[~oe_df.State.str.contains("Aprovado")].fillna("")
+
+for gp in approved_oe.GP.unique():
+    gp_df = approved_oe[approved_oe["GP"]==gp][["GP","IniTitle", "VoteDesc", "State"]]
+    print(gp + ":", len(gp_df.index), " Rejeitadas.")
+    with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', -1):  # more options can be specified also
+        display(gp_df)
+
+
+# ## As votações
 # 
 # Até agora contabilizámos as propostas de alteração e o seu resultado; se em geral existe uma votação por proposta de alteração isso nem sempre acontece: existem propostas de alteração que dão origem a mais que uma votação. As votações contêm informação adicional que é interessante para de determinar de forma directa o teor das propostas (nomeadamente o título) e também a forma como os diferentes partidos e deputados votaram: se ao nível das propostas temos o resultado final, com as votações podemos saber como atingiram esse fim.
 # 
 # Após processarmos as votações enriquecemos o _dataframe_ com informação adicional:
 
-# In[11]:
+# In[12]:
 
 
 import collections
@@ -268,7 +290,7 @@ print("\nProposals:",counter)
 print("Voting sessions:", vc)
 
 
-# In[12]:
+# In[13]:
 
 
 import pandas as pd
@@ -280,7 +302,7 @@ oe_df.drop(['SubDesc'],axis=1,inplace=True)
 oe_df
 
 
-# In[13]:
+# In[14]:
 
 
 #df = df.rename(columns={'oldName1': 'newName1', 'oldName2': 'newName2'})
@@ -310,7 +332,7 @@ oe_dfr.head()
 # Devido à forma  de funcionamento das Comissões, existem partidos e deputados não-inscritos que não estão presentes em várias delas, resultando num número elevado de ausências. Optámos pela sua não inclusão.
 # ```
 
-# In[14]:
+# In[15]:
 
 
 mycol  = ['GP', 'BE', 'PCP', 'PEV', 'JKM','PS', 'PAN', 'CR', 'PSD','IL','CDS-PP', 'CH' ]
@@ -323,7 +345,7 @@ submissions_ini.head()
 
 # Com esta informação é possível determinar os padrões de votação; o diagrama seguinte mostra a relação entre cada par de partidos: no eixo horizontal quem propõe, e no vertical como votaram:
 
-# In[15]:
+# In[16]:
 
 
 parties   = ['BE', 'PCP','PS', 'PAN','PSD','IL','CDS-PP', 'CH']
@@ -381,7 +403,7 @@ plt.show()
 
 # Uma outra visualização, menos condensada mas com maior clareza quantitativa: para cada partido é criado um gráfico de barras, ordenado pelos votos favoráveis, com  comportamento de votos dos restantes para com as suas propostas.
 
-# In[16]:
+# In[17]:
 
 
 from IPython.display import display
@@ -421,7 +443,7 @@ plt.show()
 # 
 # Com base nas votações obtemos a distância euclideana entre todos os partidos (a distância entre todos os pares possíveis, considerado todas as votações), e com base nela um dendograma que indica a distância entre eles; note-se pelos diagramas acima que o número de votações de PEV. JKM e CR são várias ordens de magnitude inferiores aos restantes. A opção aqui foi removermos estes partidos da análise por considerarmos que o resultado seria muito pouco representativo (e possivelmente enganador) - em todo o caso, é uma opção subjectiva.
 
-# In[17]:
+# In[18]:
 
 
 from scipy.spatial.distance import squareform
@@ -479,7 +501,7 @@ plt.show()
 # Com base na identificação do "Tema" (_Domain_, no _dataframe_) pode-se verificar a proximidade (e _clustering_) em termos de cada tema; é necessário ter em conta a diferença (por vezes substancial) do número de votações de cada tema: existem temas com menos de 10 votações, e até com 1, o que produziria um número elevado de diagramas, razão pela qual excluímos os temas com menos de 10 votações.
 # ```
 
-# In[18]:
+# In[19]:
 
 
 
@@ -524,7 +546,7 @@ for area in oe_df["Domain"].unique():
     #print(asc_dict)
 
 
-# In[19]:
+# In[20]:
 
 
 sc = SpectralClustering(3, affinity="precomputed",random_state=2020).fit_predict(affinmat_mm)
@@ -537,7 +559,7 @@ pd.DataFrame.from_dict(sc_dict, orient='index', columns=["Group"]).T
 # 
 # Esta separação pode ser vista também em termos de agrupamento e proximidade relativa:
 
-# In[20]:
+# In[21]:
 
 
 from sklearn.manifold import MDS
@@ -569,7 +591,7 @@ plt.show()
 # 
 # Uma visualização em 3D adiciona uma dimensão 
 
-# In[21]:
+# In[22]:
 
 
 mds = MDS(n_components=3, dissimilarity='precomputed',random_state=1234, n_init=100, max_iter=1000)

@@ -427,7 +427,7 @@ sns.heatmap(
     square =True,
     fmt="d",
     cbar_kws={"shrink": 0.8})
-plt.title('Iniciativas parlamentares: votos idênticos (não unânimes), XIII Leg. - 2015')
+plt.title('Iniciativas parlamentares: votos idênticos (não unânimes), XIII Leg.')
 
 plt.show()
 
@@ -456,7 +456,7 @@ sns.heatmap(
     square =True,
     fmt="d",
     cbar_kws={"shrink": 0.8})
-plt.title('Iniciativas parlamentares: votos idênticos, XIII Leg. - 2015')
+plt.title('Iniciativas parlamentares: votos idênticos, XIII Leg.')
 
 plt.show()
 

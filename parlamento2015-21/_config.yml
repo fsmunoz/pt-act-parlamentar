@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: "Proximidades e distâncias: análise da actividade parlamentar, 2015-2019"
+title: "Proximidades e distâncias: análise da actividade parlamentar, 2015-2021"
 author: Frederico Muñoz
 logo: pperdidos_2.jpg
 
@@ -24,7 +24,7 @@ bibtex_bibfiles:
 repository:
   url: https://github.com/fsmunoz/pt-act-parlamentar  # Online location of your book
   path_to_book: parlamento2015-21  # Optional path to your book, relative to the repository root
-  branch: jbook  # Which branch of the repository should be used when creating links (optional)
+  branch: jbook   # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
@@ -33,5 +33,5 @@ html:
   use_repository_button: true
   use_multitoc_numbering: true
 
-launch_buttons:
-  thebe                  : true
+#launch_buttons:
+#  thebe                  : true
