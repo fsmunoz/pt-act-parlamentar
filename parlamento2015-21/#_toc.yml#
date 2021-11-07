@@ -17,7 +17,11 @@ parts:
     chapters:
       - file: l13
       - file: l14
-      - file: comp_anos        
+      - file: comp_anos
+  - caption: Os Orçamentos
+    numbered: True
+    chapters:
+    - file: OE2021              
   - caption: Notas finais
     numbered: True        
     chapters:
@@ -26,8 +30,11 @@ parts:
   - caption: Apêndices
     chapters:
     - file: dados
+    - file: dados-OE2021      
     - file: metodo_det
       sections:
         - file: met_distmat
         - file: met_cluster
-    - file: OE2021
+  - caption: Apócrifos
+    chapters:
+      - file: Presidenciais_2021_wiki

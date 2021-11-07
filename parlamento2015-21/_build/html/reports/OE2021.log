@@ -17,66 +17,56 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-parties   = ['BE', 'PCP','PS', 'PAN','PSD','IL','CDS-PP', 'CH']
-#parties   = ['BE', 'PCP', 'PEV', 'PS']
+pd.crosstab(oe_df.GP, oe_df.State).columns
 
-cmap=ListedColormap(sns.color_palette("pastel").as_hex())
-colors=["#DFE38C","#F59B9B","black","#7FE7CC" ]
-cmap = ListedColormap(colors)
-
-spn = 0
-fig, axes = plt.subplots(nrows=8, ncols=8, figsize=(20, 20))
-axes = axes.ravel()
-for party in parties:
-    for p2 in parties:
-        sns.set_style("white")
-        subp = gpsubs[gpsubs['GP'] == p2][[party]]
-        sp = subp.fillna("Ausência").apply(pd.Series.value_counts)
-        d = pd.DataFrame(columns=["GP","Abstenção", "Contra", "Ausência","Favor"]).merge(sp.T, how="right").fillna(0)
-        d["GP"] = party
-        d = d.set_index("GP")
-        d = d[["Abstenção", "Contra", "Ausência","Favor"]]
-        if p2 != party:
-            sns.despine(left=True, bottom=True)
-            if spn < 8:
-                d.plot(kind='barh', stacked=True,width=400,colormap=cmap, title=p2,use_index=False,ax=axes[spn])
-            else:
-                d.plot(kind='barh', stacked=True,width=400,colormap=cmap,use_index=False,ax=axes[spn])
-            axes[spn].get_legend().remove()
-            plt.ylim(-4.5, axes[spn].get_yticks()[-1] + 0.5)
-        else:
-            axes[spn].set_xticks([])
-            if spn < 8:
-                axes[spn].set_title(p2)
-        axes[spn].set_yticks([])
-        ## Why? Who knows? Certainly not me. This is likely a side-effect of using a single axis through .ravel
-        if spn%8 == 0:
-            if spn != 0:
-                text = axes[spn].text(-4,0,party,rotation=90)
-            else:
-                text = axes[spn].text(-0.17,0.5,party,rotation=90)
-        #print(party, p2)
-        #print(d)
-        #print("-------------------------_")
-        spn += 1
-
-#axes[11].set_axis_off()
-text = axes[0].text(4,1.3,"Quem propôs",rotation=0,fontsize=22)
-text = axes[0].text(-0.4,-4,"Como votaram",rotation=90,fontsize=22)
-
-#fig.tight_layout()
-plt.show()
+ct = pd.crosstab(oe_df.GP, oe_df.State)[['Aprovado(a) por Unanimidade em Plenário',
+                                         'Aprovado(a) por Unanimidade em Comissão',
+                                         'Aprovado(a) em Plenário',
+                                         'Aprovado(a) em Comissão',
+                                         'Aprovado(a) Parcialmente em Plenário',
+                                         'Aprovado(a) Parcialmente em Comissão',
+                                         'Aguarda Voto em Comissão',
+                                         'Retirado(a)',
+                                         'Substituído(a)',
+                                         'Prejudicado(a)',
+                                         'Não Admitida',
+                                         'Rejeitado(a) em Plenário',
+                                         'Rejeitado(a) em Comissão',
+                                         
+                                        ]]
+ct
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_239769/3580787022.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     12[0m     [0;32mfor[0m [0mp2[0m [0;32min[0m [0mparties[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     13[0m         [0msns[0m[0;34m.[0m[0mset_style[0m[0;34m([0m[0;34m"white"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 14[0;31m         [0msubp[0m [0;34m=[0m [0mgpsubs[0m[0;34m[[0m[0mgpsubs[0m[0;34m[[0m[0;34m'GP'[0m[0;34m][0m [0;34m==[0m [0mp2[0m[0;34m][0m[0;34m[[0m[0;34m[[0m[0mparty[0m[0;34m][0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     15[0m         [0msp[0m [0;34m=[0m [0msubp[0m[0;34m.[0m[0mfillna[0m[0;34m([0m[0;34m"Ausência"[0m[0;34m)[0m[0;34m.[0m[0mapply[0m[0;34m([0m[0mpd[0m[0;34m.[0m[0mSeries[0m[0;34m.[0m[0mvalue_counts[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     16[0m         [0md[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mDataFrame[0m[0;34m([0m[0mcolumns[0m[0;34m=[0m[0;34m[[0m[0;34m"GP"[0m[0;34m,[0m[0;34m"Abstenção"[0m[0;34m,[0m [0;34m"Contra"[0m[0;34m,[0m [0;34m"Ausência"[0m[0;34m,[0m[0;34m"Favor"[0m[0;34m][0m[0;34m)[0m[0;34m.[0m[0mmerge[0m[0;34m([0m[0msp[0m[0;34m.[0m[0mT[0m[0;34m,[0m [0mhow[0m[0;34m=[0m[0;34m"right"[0m[0;34m)[0m[0;34m.[0m[0mfillna[0m[0;34m([0m[0;36m0[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m/tmp/ipykernel_430991/1561042817.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0mpd[0m[0;34m.[0m[0mcrosstab[0m[0;34m([0m[0moe_df[0m[0;34m.[0m[0mGP[0m[0;34m,[0m [0moe_df[0m[0;34m.[0m[0mState[0m[0;34m)[0m[0;34m.[0m[0mcolumns[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;34m[0m[0m
+[0;32m----> 3[0;31m ct = pd.crosstab(oe_df.GP, oe_df.State)[['Aprovado(a) por Unanimidade em Plenário',
+[0m[1;32m      4[0m                                          [0;34m'Aprovado(a) por Unanimidade em Comissão'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m                                          [0;34m'Aprovado(a) em Plenário'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'gpsubs' is not defined
-NameError: name 'gpsubs' is not defined
+[0;32m~/.local/lib/python3.8/site-packages/pandas/core/frame.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m   3462[0m             [0;32mif[0m [0mis_iterator[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   3463[0m                 [0mkey[0m [0;34m=[0m [0mlist[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 3464[0;31m             [0mindexer[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mloc[0m[0;34m.[0m[0m_get_listlike_indexer[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   3465[0m [0;34m[0m[0m
+[1;32m   3466[0m         [0;31m# take() does not accept boolean indexers[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m_get_listlike_indexer[0;34m(self, key, axis)[0m
+[1;32m   1312[0m             [0mkeyarr[0m[0;34m,[0m [0mindexer[0m[0;34m,[0m [0mnew_indexer[0m [0;34m=[0m [0max[0m[0;34m.[0m[0m_reindex_non_unique[0m[0;34m([0m[0mkeyarr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1313[0m [0;34m[0m[0m
+[0;32m-> 1314[0;31m         [0mself[0m[0;34m.[0m[0m_validate_read_indexer[0m[0;34m([0m[0mkeyarr[0m[0;34m,[0m [0mindexer[0m[0;34m,[0m [0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1315[0m [0;34m[0m[0m
+[1;32m   1316[0m         if needs_i8_conversion(ax.dtype) or isinstance(
+
+[0;32m~/.local/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m_validate_read_indexer[0;34m(self, key, indexer, axis)[0m
+[1;32m   1375[0m [0;34m[0m[0m
+[1;32m   1376[0m             [0mnot_found[0m [0;34m=[0m [0mlist[0m[0;34m([0m[0mensure_index[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[[0m[0mmissing_mask[0m[0;34m.[0m[0mnonzero[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m][0m[0;34m.[0m[0munique[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1377[0;31m             [0;32mraise[0m [0mKeyError[0m[0;34m([0m[0;34mf"{not_found} not in index"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1378[0m [0;34m[0m[0m
+[1;32m   1379[0m [0;34m[0m[0m
+
+[0;31mKeyError[0m: "['Aguarda Voto em Comissão', 'Substituído(a)', 'Não Admitida'] not in index"
+KeyError: "['Aguarda Voto em Comissão', 'Substituído(a)', 'Não Admitida'] not in index"
 

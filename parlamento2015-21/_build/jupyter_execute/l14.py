@@ -60,9 +60,9 @@ import xml.etree.ElementTree as ET
 
 #l13_ini_url = 'https://app.parlamento.pt/webutils/docs/doc.xml?path=6148523063446f764c324679626d56304c3239775a57356b595852684c3052685a47397a51574a6c636e52766379394a626d6c6a6157463061585a686379395953556c4a4a5449775447566e61584e7359585231636d45765357357059326c6864476c3259584e5953556c4a4c6e687462413d3d&fich=IniciativasXIII.xml&Inline=true'
 #l13_ini_tree = ET.parse(urlopen(l13_ini_url))
-l13_ini_file = '../l13_ini.xml'
+l13_ini_file = './l13_ini.xml'
 l13_ini_tree = ET.parse(l13_ini_file)
-l14_ini_file = '../l14_ini.xml'
+l14_ini_file = './l14_ini.xml'
 l14_ini_tree = ET.parse(l14_ini_file)
 
 
@@ -325,9 +325,30 @@ l14_ini_df[["descricao","PAN","Cristina Rodrigues (Ninsc)","PAN/CR"]]
 
 votes = l14_ini_df
 parties = l14_parties
+votes['data']= pd.to_datetime(votes['data'])
+votes['ano'] = pd.DatetimeIndex(votes['data']).year
+votes['leg'] = 14
 votes_hm=votes[l14_parties]
 votes_nu = votes[votes["unanime"] != "unanime"]
 votes_nu_hm=votes_nu[l14_parties]
+min_date=min(votes["data"])
+max_date=max(votes["data"])
+
+
+# ```{margin} Estatísticas base
+# Os dados essenciais do ficheiro XML importado são as seguintes:
+# ```
+
+# In[11]:
+
+
+from datetime import datetime
+from IPython.display import display, Markdown, Latex
+
+
+display(Markdown("*Total de votações:* {}".format(votes.shape[0])))
+display(Markdown("*Data limite inferior:* {}".format(datetime.date(min_date))))
+display(Markdown("*Data limite superior:* {}".format(datetime.date(max_date))))
 
 
 # O processamento inicial resulta num conjunto bastante alargado de colunas e observações (votações, uma por linha), nomeadamente os votos dos vários partidos; as deputadas independentes Joacina Katar Moreira e Cristina Rodrigues têm os seus votos complementados pelos do partido de origem.
@@ -336,7 +357,7 @@ votes_nu_hm=votes_nu[l14_parties]
 # A referida saída de duas deputadas dos partidos pelos quais foram eleitos levam à necessidade de definir uma abordagem para a contabilização dos votos. A solução adoptada foi a de considerar que o histórico de votos das deputadas inclui o sentido de voto do partido antes da sua saída. Para o caso de Joacine Katar Moreira, deputada única, esta opção é transparente. No caso de Cristina Rodrigues o grupo parlamentar do PAN continua a existir após a sua saída, mas cremos que a mesma solução é a que mais faz sentido.
 # ```
 
-# In[11]:
+# In[12]:
 
 
 with pd.option_context("display.max_columns", 0):
@@ -347,7 +368,7 @@ with pd.option_context("display.max_columns", 0):
 # 
 # O mapa térmico de votações para a legislatura -- recordemos que nos permite ver através de cores todas as votações, dando uma imagem geral do comportamento dos vários partidos -- é o seguinte:
 
-# In[12]:
+# In[13]:
 
 
 votes_hmn = votes_hm.replace(["A Favor", "Contra", "Abstenção", "Ausência"], [1,-1,0,-2]).fillna(0)
@@ -370,7 +391,7 @@ plt.show()
 # 
 # Das votações da legislatura é esta a matriz de votações idênticas:
 
-# In[13]:
+# In[14]:
 
 
 pv_list = []
@@ -402,7 +423,7 @@ pv.style.apply(highlight_diag, axis=None)
 # 
 # ```
 
-# In[14]:
+# In[15]:
 
 
 pv_nu_list = []
@@ -438,13 +459,13 @@ plt.show()
 # A tabela respectiva (observe-se o menor número de votações consideradas, dada a remoção das unânimes)
 # ```
 
-# In[15]:
+# In[16]:
 
 
 pv_nu.style.apply(highlight_diag, axis=None)
 
 
-# In[16]:
+# In[17]:
 
 
 fig = plt.figure(figsize=(8,8))
@@ -467,7 +488,7 @@ plt.show()
 # 
 # Considerando a distância entre os votos (onde um voto a favor está mais perto de uma abstenção do que de um voto contra) obtemos o seguinte `clustermap` que conjuga a visualização da matriz de distância com o dendograma.
 
-# In[17]:
+# In[18]:
 
 
 ## Change the mapping, we now consider Abst and Aus the same
@@ -491,12 +512,13 @@ distmat = pd.DataFrame(
 ## Normalise by scaling between 0-1, using dataframe max value to keep the symmetry.
 ## This is essentially a cosmetic step
 #distmat=((distmat-distmat.min().min())/(distmat.max().max()-distmat.min().min()))*1
+    
 distmat.style.apply(highlight_diag, axis=None)
 
 
 # O _clustermap_ inclui os resultados do agrupamentos pelo método de Ward, com base nas distâncias acima:
 
-# In[18]:
+# In[19]:
 
 
 ## Perform hierarchical linkage on the distance matrix using Ward's method.
@@ -518,7 +540,7 @@ plt.show()
 # O dendograma respectivo é este, e como se vê é exactamente o mesmo que o apresentado no _clustermap_
 # ```
 
-# In[19]:
+# In[20]:
 
 
 from scipy.cluster.hierarchy import dendrogram
@@ -539,7 +561,7 @@ plt.show()
 # 
 # Como passo preliminar normalizamos as distâncias no intervalo [0,1], após o qual obtemos a matriz de afinidade a partir da matriz de distância:
 
-# In[20]:
+# In[21]:
 
 
 distmat_mm=((distmat-distmat.min().min())/(distmat.max().max()-distmat.min().min()))*1
@@ -552,7 +574,7 @@ affinmat_mm.style.apply(highlight_diag, axis=None)
 # A matriz de afinidade normalizada pode ser vizualizada de forma semelhante à de distância; como está normalizada e numa escala $ 0 - 1 $ podem-se considerar os valores uma percentagem de afinidade. É importante considerar que, dado o processo de normalização, os valores apresentados ampliam as diferenças.
 # ```
 
-# In[21]:
+# In[22]:
 
 
 ## Make the top triangle
@@ -582,7 +604,7 @@ plt.show()
 # O DBSCAN é algoritmo que, entre outras características, não necessita de ser inicializado com um número pré-determinado de grupos, procedendo à sua identificação através da densidade dos pontos {cite}`DBSCANMacroscopicInvestigation2018`: o DBSCAN identifica os grupos de forma automática.
 # 
 
-# In[22]:
+# In[23]:
 
 
 from sklearn.cluster import DBSCAN
@@ -598,7 +620,7 @@ pd.DataFrame.from_dict(dbscan_dict, orient='index', columns=["Group"]).T
 # 
 # Outra abordagem para efectuar a identificação de grupos  passa pela utilização de _Spectral Clustering_, uma forma de _clustering_ que utiliza os valores-próprios e vectores-próprios de matrizes como forma de determinação dos grupos. Este método necessita que seja determinado _a priori_ o número de _clusters_; assim, podemos usar este método para agrupamentos mais finos, neste caso identificando 4 grupos (dado o maior número de partidos e deputadas não-inscritas):
 
-# In[23]:
+# In[24]:
 
 
 from sklearn.cluster import SpectralClustering
@@ -614,7 +636,7 @@ pd.DataFrame.from_dict(sc_dict, orient='index', columns=["Group"]).T
 # Ao MDS pode ser acrescentada informação dos grupos previamente identificados: nestes diagramas usamos as cores para denotar os grupos, tanto para DBSCAN como para Spectral Clustering.
 # ```
 
-# In[24]:
+# In[25]:
 
 
 from sklearn.manifold import MDS
@@ -642,7 +664,7 @@ for label, x, y in zip(distmat_mm.columns, coords[:, 0], coords[:, 1]):
 plt.show()
 
 
-# In[25]:
+# In[26]:
 
 
 from sklearn.manifold import MDS
@@ -666,7 +688,7 @@ plt.show()
 glue("mds_14", fig, display=False)
 
 
-# In[26]:
+# In[27]:
 
 
 for label, x, y in zip(distmat_mm.columns, coords[:, 0], coords[:, 1]):
@@ -679,7 +701,7 @@ for label, x, y in zip(distmat_mm.columns, coords[:, 0], coords[:, 1]):
 # 
 # Uma das formas é o _multidimensional scaling_ que permite visualizar a distância ao projectar em 2 ou 3 dimensões (também conhecidas como _dimensões visualizavies_) conjuntos multidimensionais, mantendo a distância relativa {cite}`GraphicalRepresentationProximity`.
 
-# In[27]:
+# In[28]:
 
 
 from sklearn.manifold import MDS
@@ -702,7 +724,7 @@ plt.show()
 
 # Por último, o mesmo MDS em 3D, e em forma interactiva:
 
-# In[28]:
+# In[29]:
 
 
 mds = MDS(n_components=3, dissimilarity='precomputed',random_state=1234, n_init=100, max_iter=1000)
@@ -735,7 +757,7 @@ plot(fig, filename = 'l14-3d-mds.html')
 display(HTML('l14-3d-mds.html'))
 
 
-# In[29]:
+# In[30]:
 
 
 ## From https://stackoverflow.com/questions/10374930/matplotlib-annotating-a-3d-scatter-plot

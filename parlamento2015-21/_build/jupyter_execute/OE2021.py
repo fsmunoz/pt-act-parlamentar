@@ -6,12 +6,10 @@
 # A análise das votações e posicionamento relativo dos partidos tendo como base *exclusivamente* a forma como votam foi a base do trabalho anterior, análise essa que teve como fonte as votações das Iniciativas e Actividades.
 # 
 # O Orçamento de Estado para 2021 foi um acontecimento marcante da realidade política nacional do último trimestre de 2020 e que continuará a ter impactos na apreciação e debate político no futuro próximo: a posição dos vários partidos em termos de viabilização ou não do OE, as propostas que apresentaram e quem as aprovou ou recusou são matéria utilizada no debate para as Presidenciais, por exemplo.
-# 
-# Estas votações não estão incluídas na análise anterior: os dados utilizados relativs a votações no Parlamento não incluem, por exemplo, as votações feitas em Comissões. Esta actualização aborda um conjunto de votações independente, muito mais circunscrito no tempo e (dentro da grande variedade de temas abordados no OE) no conteúdo.
 
 # ## Metodologia
 
-# Com base nos dados disponibilizados pela Assembleia da República em formato XML [DadosAbertos] são criadas _dataframes_ (tabelas de duas dimensões) com base na selecção de informação relativa aos padrões de votação de cada partido (e/ou deputados não-inscritos)
+# Com base nos dados disponibilizados pela Assembleia da República em formato XML são criadas _dataframes_ (tabelas de duas dimensões) com base na selecção de informação relativa aos padrões de votação de cada partido (e/ou deputados não-inscritos)
 # 
 # São fundamentalmente feitas as seguintes análises:
 # 
@@ -48,7 +46,9 @@ from urllib.request import urlopen
 import xml.etree.ElementTree as ET
 
 oe_url = "http://app.parlamento.pt/webutils/docs/doc.xml?path=6148523063446f764c324679626d56304c3239775a57356b595852684c3052685a47397a51574a6c636e52766379395063734f6e5957316c626e52764a5449775a47386c4d6a4246633352685a47387657456c574a5449775447566e61584e7359585231636d457654305651636d397762334e3059584e426248526c636d466a595738794d4449785433497565473173&fich=OEPropostasAlteracao2021Or.xml&Inline=true"
-oe_tree = ET.parse(urlopen(oe_url))
+#oe_tree = ET.parse(urlopen(oe_url))
+oe_file = './OEPropostasAlteracao2021Or.xml'
+oe_tree = ET.parse(oe_file)
 
 
 # In[4]:
@@ -112,13 +112,13 @@ oe_df = pd.DataFrame(oe_list)
 oe_df
 
 
-# ```{margin}
-# Em gráfico de barras:
-# ```
-
 # ## As propostas: quantidade, aprovações, rejeições
 # 
 # Após obtermos e processarmos o ficheiro com as Propostas de Alteração podemos ter uma primeira ideia sobre a origem das propostas:
+
+# ```{margin}
+# Em gráfico de barras:
+# ```
 
 # In[6]:
 
@@ -137,11 +137,17 @@ oe_df.groupby('GP')[['ID']].count().sort_values("ID", ascending=False)
 # «Os partidos que viabilizaram o OE 2021, sem contar com o PS, entregaram 58% das propostas de alteração, com um total de 898 medidas. O PCP, que é decisivo na votação final, é o que mais quer mudar OE», {cite}`eco58PropostasPara2020`)
 # ```
 
+# In[8]:
+
+
+pd.crosstab(oe_df.GP, oe_df.State)
+
+
 # A quantidade total de propostas está em linha com o que se noticiou na altura relativamente à fonte maioritária das propostas de alteração.
 # 
 # Sabemos a quantidade total de propostas, mas quais foram aprovadas? Esta tabela indica os resultados das propostas de todos os partidos e deputados:
 
-# In[8]:
+# In[9]:
 
 
 pd.crosstab(oe_df.GP, oe_df.State).columns
@@ -152,8 +158,6 @@ ct = pd.crosstab(oe_df.GP, oe_df.State)[['Aprovado(a) por Unanimidade em Plenár
                                          'Aprovado(a) em Comissão',
                                          'Aprovado(a) Parcialmente em Plenário',
                                          'Aprovado(a) Parcialmente em Comissão',
-                                         'Entrada (via IPA)',
-                                         'Aguarda Voto em Comissão',
                                          'Retirado(a)',
                                          'Prejudicado(a)',
                                          'Rejeitado(a) em Plenário',
@@ -164,7 +168,7 @@ ct
 
 # A mesma informação em forma de gráfico de barras: o total de propostas de cada partido (ou deputados) com a distribuição do resultado das mesmas, ordenados pelo maior número de aprovações.
 
-# In[9]:
+# In[10]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -198,7 +202,7 @@ plt.show()
 # 
 # E que propostas cada partido conseguiu aprovar? A utilização do título da iniciativa é aqui útil
 
-# In[10]:
+# In[11]:
 
 
 from IPython.display import display, HTML
@@ -216,7 +220,7 @@ for gp in approved_oe.GP.unique():
 # 
 # Da mesma forma podemos obter a lista de propostas rejeitas, por partido.
 
-# In[11]:
+# In[12]:
 
 
 from IPython.display import display, HTML
@@ -236,7 +240,7 @@ for gp in approved_oe.GP.unique():
 # 
 # Após processarmos as votações enriquecemos o _dataframe_ com informação adicional:
 
-# In[12]:
+# In[13]:
 
 
 import collections
@@ -247,7 +251,7 @@ vc=0
 ## Inspired by the approach of Chris Moffitt here https://pbpython.com/pandas-list-dict.html
 oe_list = []
 
-for alter in oe_tree.findall(".//PropostaDeAlteracao"):
+for alter in oe_tree.getroot().findall(".//PropostaDeAlteracao"):
     votep = alter.find('./Votacoes')
     if votep is not None:
         oe_dict = collections.OrderedDict()
@@ -290,7 +294,7 @@ print("\nProposals:",counter)
 print("Voting sessions:", vc)
 
 
-# In[13]:
+# In[14]:
 
 
 import pandas as pd
@@ -302,7 +306,7 @@ oe_df.drop(['SubDesc'],axis=1,inplace=True)
 oe_df
 
 
-# In[14]:
+# In[15]:
 
 
 #df = df.rename(columns={'oldName1': 'newName1', 'oldName2': 'newName2'})
@@ -332,7 +336,7 @@ oe_dfr.head()
 # Devido à forma  de funcionamento das Comissões, existem partidos e deputados não-inscritos que não estão presentes em várias delas, resultando num número elevado de ausências. Optámos pela sua não inclusão.
 # ```
 
-# In[15]:
+# In[16]:
 
 
 mycol  = ['GP', 'BE', 'PCP', 'PEV', 'JKM','PS', 'PAN', 'CR', 'PSD','IL','CDS-PP', 'CH' ]
@@ -345,7 +349,7 @@ submissions_ini.head()
 
 # Com esta informação é possível determinar os padrões de votação; o diagrama seguinte mostra a relação entre cada par de partidos: no eixo horizontal quem propõe, e no vertical como votaram:
 
-# In[16]:
+# In[17]:
 
 
 parties   = ['BE', 'PCP','PS', 'PAN','PSD','IL','CDS-PP', 'CH']
@@ -403,7 +407,7 @@ plt.show()
 
 # Uma outra visualização, menos condensada mas com maior clareza quantitativa: para cada partido é criado um gráfico de barras, ordenado pelos votos favoráveis, com  comportamento de votos dos restantes para com as suas propostas.
 
-# In[17]:
+# In[18]:
 
 
 from IPython.display import display
@@ -443,7 +447,7 @@ plt.show()
 # 
 # Com base nas votações obtemos a distância euclideana entre todos os partidos (a distância entre todos os pares possíveis, considerado todas as votações), e com base nela um dendograma que indica a distância entre eles; note-se pelos diagramas acima que o número de votações de PEV. JKM e CR são várias ordens de magnitude inferiores aos restantes. A opção aqui foi removermos estes partidos da análise por considerarmos que o resultado seria muito pouco representativo (e possivelmente enganador) - em todo o caso, é uma opção subjectiva.
 
-# In[18]:
+# In[19]:
 
 
 from scipy.spatial.distance import squareform
@@ -501,7 +505,7 @@ plt.show()
 # Com base na identificação do "Tema" (_Domain_, no _dataframe_) pode-se verificar a proximidade (e _clustering_) em termos de cada tema; é necessário ter em conta a diferença (por vezes substancial) do número de votações de cada tema: existem temas com menos de 10 votações, e até com 1, o que produziria um número elevado de diagramas, razão pela qual excluímos os temas com menos de 10 votações.
 # ```
 
-# In[19]:
+# In[20]:
 
 
 
@@ -546,7 +550,7 @@ for area in oe_df["Domain"].unique():
     #print(asc_dict)
 
 
-# In[20]:
+# In[21]:
 
 
 sc = SpectralClustering(3, affinity="precomputed",random_state=2020).fit_predict(affinmat_mm)
@@ -559,7 +563,7 @@ pd.DataFrame.from_dict(sc_dict, orient='index', columns=["Group"]).T
 # 
 # Esta separação pode ser vista também em termos de agrupamento e proximidade relativa:
 
-# In[21]:
+# In[22]:
 
 
 from sklearn.manifold import MDS
@@ -591,7 +595,7 @@ plt.show()
 # 
 # Uma visualização em 3D adiciona uma dimensão 
 
-# In[22]:
+# In[23]:
 
 
 mds = MDS(n_components=3, dissimilarity='precomputed',random_state=1234, n_init=100, max_iter=1000)

@@ -39,9 +39,9 @@ import xml.etree.ElementTree as ET
 
 #l13_ini_url = 'https://app.parlamento.pt/webutils/docs/doc.xml?path=6148523063446f764c324679626d56304c3239775a57356b595852684c3052685a47397a51574a6c636e52766379394a626d6c6a6157463061585a686379395953556c4a4a5449775447566e61584e7359585231636d45765357357059326c6864476c3259584e5953556c4a4c6e687462413d3d&fich=IniciativasXIII.xml&Inline=true'
 #l13_ini_tree = ET.parse(urlopen(l13_ini_url))
-l13_ini_file = '../l13_ini.xml'
+l13_ini_file = './l13_ini.xml'
 l13_ini_tree = ET.parse(l13_ini_file)
-l14_ini_file = '../l14_ini.xml'
+l14_ini_file = './l14_ini.xml'
 l14_ini_tree = ET.parse(l14_ini_file)
 
 

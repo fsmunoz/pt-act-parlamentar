@@ -11,17 +11,15 @@
 
 # ## As eleições legislativas de 2015
 # 
-# A XIII Legislatura resultou das eleições legislativas de 2015. Os resultados colocam a coligação «Portugal à Frente» (PSD e CDS-PP) à frente com 39% dos votos. O processo de formação do governo iria, contudo, introduzir uma novidade no histórico político nacional: a formação de Governo pela segunda força mais votada (PS) suportado para tal por uma maioria de Esquerda (BE, PCP e PEV).
-# 
 
 # ```{margin} Resultados eleitorias das legislativas de 2015
 # ![fishy](./_images/res_2015.png) 
 # Fonte: CNE {cite:p}`cneLegislativas2015Resultados2015`
 # ```
 
+# A XIII Legislatura resultou das eleições legislativas de 2015. Os resultados colocam a coligação «Portugal à Frente» (PSD e CDS-PP) à frente com 39% dos votos. O processo de formação do governo iria, contudo, introduzir uma novidade no histórico político nacional: a formação de Governo pela segunda força mais votada (PS) suportado para tal por uma maioria de Esquerda (BE, PCP e PEV).
+
 # ## Os dados das votações
-# 
-# Para a XIII legislatura os dados analisados dizem exclusivamente respeito às Iniciativas parlamentares (as Actividades, em menor número e que dizem respeito a temas como votos de pesar ou condenação, não estão presentes na página do Parlamento de Dados Abertos).
 
 # In[1]:
 
@@ -52,9 +50,9 @@ import xml.etree.ElementTree as ET
 
 #l13_ini_url = 'https://app.parlamento.pt/webutils/docs/doc.xml?path=6148523063446f764c324679626d56304c3239775a57356b595852684c3052685a47397a51574a6c636e52766379394a626d6c6a6157463061585a686379395953556c4a4a5449775447566e61584e7359585231636d45765357357059326c6864476c3259584e5953556c4a4c6e687462413d3d&fich=IniciativasXIII.xml&Inline=true'
 #l13_ini_tree = ET.parse(urlopen(l13_ini_url))
-l13_ini_file = '../l13_ini.xml'
+l13_ini_file = './l13_ini.xml'
 l13_ini_tree = ET.parse(l13_ini_file)
-l14_ini_file = '../l14_ini.xml'
+l14_ini_file = './l14_ini.xml'
 l14_ini_tree = ET.parse(l14_ini_file)
 
 
@@ -332,9 +330,27 @@ votes_nu = votes[votes["unanime"] != "unanime"]
 votes_nu_hm=votes_nu[l13_parties]
 
 
-# O processamento inicial resulta num conjunto bastante alargado de colunas e observações (votações, uma por linha), nomeadamente os votos dos vários partidos:
+# ```{margin} Estatísticas base
+# Os dados essenciais do ficheiro XML importado são as seguintes:
+# ```
+# 
 
 # In[9]:
+
+
+from datetime import datetime
+from IPython.display import display, Markdown, Latex
+
+display(Markdown("*Total de votações:* {}".format(votes.shape[0])))
+display(Markdown("*Data limite inferior:* {}".format(datetime.date(min_date))))
+display(Markdown("*Data limite superior:* {}".format(datetime.date(max_date))))
+
+
+# Para a XIII legislatura os dados analisados dizem exclusivamente respeito às Iniciativas parlamentares (as Actividades, em menor número e que dizem respeito a temas como votos de pesar ou condenação, não estão presentes na página do Parlamento de Dados Abertos).
+
+# O processamento inicial resulta num conjunto bastante alargado de colunas e observações (votações, uma por linha), nomeadamente os votos dos vários partidos:
+
+# In[10]:
 
 
 with pd.option_context("display.max_columns", 0):
@@ -345,7 +361,7 @@ with pd.option_context("display.max_columns", 0):
 # 
 # O mapa térmico de votações para a legislatura -- recordemos que nos permite ver através de cores todas as votações, dando uma imagem geral do comportamento dos vários partidos -- é o seguinte:
 
-# In[10]:
+# In[11]:
 
 
 votes_hmn = votes_hm.replace(["A Favor", "Contra", "Abstenção", "Ausência"], [1,-1,0,-2]).fillna(0)
@@ -368,7 +384,7 @@ plt.show()
 # 
 # Das votações da legislatura é esta a matriz de votações idênticas:
 
-# In[11]:
+# In[12]:
 
 
 pv_list = []
@@ -400,7 +416,7 @@ pv.style.apply(highlight_diag, axis=None)
 # 
 # ```
 
-# In[12]:
+# In[13]:
 
 
 pv_nu_list = []
@@ -436,13 +452,13 @@ plt.show()
 # A tabela respectiva (observe-se o menor número de votações consideradas, dada a remoção das unânimes)
 # ```
 
-# In[13]:
+# In[14]:
 
 
 pv_nu.style.apply(highlight_diag, axis=None)
 
 
-# In[14]:
+# In[15]:
 
 
 fig = plt.figure(figsize=(8,8))
@@ -465,7 +481,7 @@ plt.show()
 # 
 # Considerando a distância entre os votos (onde um voto a favor está mais perto de uma abstenção do que de um voto contra) obtemos o seguinte `clustermap` que conjuga a visualização da matriz de distância com o dendograma.
 
-# In[15]:
+# In[16]:
 
 
 ## Change the mapping, we now consider Abst and Aus the same
@@ -492,7 +508,7 @@ distmat = pd.DataFrame(
 distmat.style.apply(highlight_diag, axis=None)
 
 
-# In[16]:
+# In[17]:
 
 
 ## Perform hierarchical linkage on the distance matrix using Ward's method.
@@ -514,7 +530,7 @@ plt.show()
 # O dendograma respectivo é este, e como se vê é exactamente o mesmo que o apresentado no _clustermap_
 # ```
 
-# In[17]:
+# In[18]:
 
 
 from scipy.cluster.hierarchy import dendrogram
@@ -535,7 +551,7 @@ plt.show()
 # 
 # Como passo preliminar normalizamos as distâncias no intervalo [0,1], após o qual obtemos a matriz de afinidade a partir da matriz de distância:
 
-# In[18]:
+# In[19]:
 
 
 distmat_mm=((distmat-distmat.min().min())/(distmat.max().max()-distmat.min().min()))*1
@@ -548,7 +564,7 @@ affinmat_mm.style.apply(highlight_diag, axis=None)
 # A matriz de afinidade normalizada pode ser vizualizada de forma semelhante à de distância; como está normalizada e numa escala $ 0 - 1 $ podem-se considerar os valores uma percentagem de afinidade. É importante considerar que, dado o processo de normalização, os valores apresentados ampliam as diferenças.
 # ```
 
-# In[19]:
+# In[20]:
 
 
 ## Make the top triangle
@@ -578,7 +594,7 @@ plt.show()
 # O DBSCAN é algoritmo que, entre outras características, não necessita de ser inicializado com um número pré-determinado de grupos, procedendo à sua identificação através da densidade dos pontos {cite}`DBSCANMacroscopicInvestigation2018`: o DBSCAN identifica os grupos de forma automática.
 # 
 
-# In[20]:
+# In[21]:
 
 
 from sklearn.cluster import DBSCAN
@@ -594,7 +610,7 @@ pd.DataFrame.from_dict(dbscan_dict, orient='index', columns=["Group"]).T
 # 
 # Outra abordagem para efectuar a identificação de grupos  passa pela utilização de _Spectral Clustering_, uma forma de _clustering_ que utiliza os valores-próprios e vectores-próprios de matrizes como forma de determinação dos grupos. Este método necessita que seja determinado _a priori_ o número de _clusters_; assim, podemos usar este método para agrupamentos mais finos, neste caso identificando 3 grupos:
 
-# In[21]:
+# In[22]:
 
 
 from sklearn.cluster import SpectralClustering
@@ -610,7 +626,7 @@ pd.DataFrame.from_dict(sc_dict, orient='index', columns=["Group"]).T
 # Ao MDS pode ser acrescentada informação dos grupos previamente identificados: nestes diagramas usamos as cores para denotar os grupos, tanto para DBSCAN como para Spectral Clustering.
 # ```
 
-# In[22]:
+# In[23]:
 
 
 from sklearn.manifold import MDS
@@ -638,7 +654,7 @@ for label, x, y in zip(distmat_mm.columns, coords[:, 0], coords[:, 1]):
 plt.show()
 
 
-# In[23]:
+# In[24]:
 
 
 from sklearn.manifold import MDS
@@ -668,7 +684,7 @@ glue("mds_13", fig, display=False)
 # 
 # Uma das formas é o _multidimensional scaling_ que permite visualizar a distância ao projectar em 2 ou 3 dimensões (também conhecidas como _dimensões visualizavies_) conjuntos multidimensionais, mantendo a distância relativa {cite}`GraphicalRepresentationProximity`.
 
-# In[24]:
+# In[25]:
 
 
 from sklearn.manifold import MDS
@@ -691,7 +707,7 @@ plt.show()
 
 # Por último, o mesmo MDS em 3D, e em forma interactiva:
 
-# In[25]:
+# In[26]:
 
 
 mds = MDS(n_components=3, dissimilarity='precomputed',random_state=1234, n_init=100, max_iter=1000)
@@ -724,7 +740,7 @@ plot(fig, filename = 'l13-3d-mds.html')
 display(HTML('l13-3d-mds.html'))
 
 
-# In[26]:
+# In[27]:
 
 
 ## From https://stackoverflow.com/questions/10374930/matplotlib-annotating-a-3d-scatter-plot

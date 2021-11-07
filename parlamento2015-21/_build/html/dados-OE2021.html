@@ -338,18 +338,17 @@ var table = new Tabulator("#example-table", {
     resizableRows:true,       //allow row order to be changed
     autoColumns:true,
     layout:"fitColumns",
-   // ajaxURL:"http://0.0.0.0:8000/all_votes.json", //ajax URL
     ajaxURL:"./oe2021.json", //ajax URL
 });
 
 //trigger download of data.csv file
 document.getElementById("download-csv").addEventListener("click", function(){
-    table.download("csv", "data.csv");
+    table.download("csv", "oe2021.csv");
 });
 
 //trigger download of data.json file
 document.getElementById("download-json").addEventListener("click", function(){
-    table.download("json", "data.json");
+    table.download("json", "oe2021.json");
 });
 
 </script>

@@ -1,0 +1,1107 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021 Presidential Elections: using GeoJSON and Wikipedia &#8212; Proximidades e distâncias: análise da actividade parlamentar, 2015-2021</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabulator.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fsm.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/tabulator.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Métodos de clustering" href="met_cluster.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/pperdidos_2.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Proximidades e distâncias: análise da actividade parlamentar, 2015-2021</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Início
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Introdução
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="actual.html">
+   1. O que é novo, e o que se mantém
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_metodo.html">
+   2. Metodologia e resultados: visão geral
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Análise das legislaturas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="l13.html">
+   3. A XIII Legislatura: o princípio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="l14.html">
+   4. Continuidade e fim: a XIV Legislatura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comp_anos.html">
+   5. As votações no tempo: comparação das legislaturas e anos
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Os Orçamentos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="OE2021.html">
+   6. Orçamento de Estado de 2021
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Notas finais
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="conc.html">
+   7. Conclusão
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bib.html">
+   8. Biliografia
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Apêndices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dados.html">
+   Os dados das Legislaturas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dados-OE2021.html">
+   Os dados do Orçamento de Estado de 2021
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="metodo_det.html">
+   Em maior detalhe
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="met_distmat.html">
+     Distâncias e matrizes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="met_cluster.html">
+     Métodos de
+     <em>
+      clustering
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Apócrifos
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2021 Presidential Elections: using GeoJSON and Wikipedia
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Presidenciais_2021_wiki.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/fsmunoz/pt-act-parlamentar"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/fsmunoz/pt-act-parlamentar/issues/new?title=Issue%20on%20page%20%2FPresidenciais_2021_wiki.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/fsmunoz/pt-act-parlamentar/jbook?urlpath=tree/parlamento2015-21/Presidenciais_2021_wiki.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identifying-and-obtaining-the-data">
+   Identifying and obtaining  the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualising-data-on-a-map">
+   Visualising data on a map
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-thoughts">
+   Final thoughts
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="presidential-elections-using-geojson-and-wikipedia">
+<h1>2021 Presidential Elections: using GeoJSON and Wikipedia<a class="headerlink" href="#presidential-elections-using-geojson-and-wikipedia" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>While open data is increasingly made available by public and private institutions it’s not always possible to use it for specific purposes. In the case of elections it’s not uncommon for the final and officially approved data to take months (if not years) to be made available, which impairs the ability to react quickly to ongoing political events.</p>
+<p>One possibility is to manually collect information as it is made available, and this is where Wikipedia can become a very useful source of structured data: Wikipedia editors and volunteers create and update voting data to enrich the articles on the election process. This data is not available in a “ready to consume” form but it <em>is</em> structured.</p>
+<p>In this short notebook we will see how to find the right data, process it and then use it to visualise results; for this we will use <strong>GeoPandas</strong> to display voting boundaries based on a <strong>GeoJSON</strong> file, enrich a <strong>GeoDataFrame</strong> with the extracted elections results and analyse the voting patterns using a <strong>cloropeth map</strong>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">About</p>
+<p><em>NB: the debate about the reliability of Wikipedia as a source of information is outside the scope of this notebook.</em></p>
+</div>
+</div>
+<div class="section" id="identifying-and-obtaining-the-data">
+<h2>Identifying and obtaining  the data<a class="headerlink" href="#identifying-and-obtaining-the-data" title="Permalink to this headline">¶</a></h2>
+<p>The article on the 2021 Presidential Elections in Portugal is available at <a class="reference external" href="https://pt.wikipedia.org/wiki/Elei%C3%A7%C3%B5es_presidenciais_portuguesas_de_2021">https://pt.wikipedia.org/wiki/Eleições_presidenciais_portuguesas_de_2021</a> ; we will be using the Portuguese Wikipedia article since it is the one that has the updated information in table form.</p>
+<p>There are several ways to present the data; in this notebook we will use the Municipality (<em>Concelho</em>) as the smallest unit since that’s the smallest one available at the page (the smallest unit, the parish (<em>freguesia</em>), is the one directly below this one, one <em>concelho</em> being composed of one or more parishes).</p>
+<p><img alt="image.png" src="_images/image1.png" /></p>
+<p>Checking the page source we can find the relevant table and observe the markdown that identifies it.</p>
+<p><img alt="image-2.png" src="_images/image2.png" /></p>
+<p><strong>Specifically, we see that we have a table that comes after a <code class="docutils literal notranslate"><span class="pre">span</span></code> with and <code class="docutils literal notranslate"><span class="pre">id</span></code> of <code class="docutils literal notranslate"><span class="pre">Resultados_por_Concelhos</span></code></strong>.</p>
+<p>With that information we now proceed to get the entire Wikipedia article; using <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> we can parse it and turn it into a structure JSON object that allows us to access it in a much easier way - for example, getting the title:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">wurl</span><span class="o">=</span><span class="s2">&quot;https://pt.wikipedia.org/wiki/Elei%C3%A7%C3%B5es_presidenciais_portuguesas_de_2021&quot;</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">wpage</span><span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wurl</span><span class="p">,</span><span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">wpage</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;title&gt;Eleições presidenciais portuguesas de 2021 – Wikipédia, a enciclopédia livre&lt;/title&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We make use of that to search for our table: the one that immediately follows a <code class="docutils literal notranslate"><span class="pre">span</span></code> with the specific <code class="docutils literal notranslate"><span class="pre">id</span></code> we have found before:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Resultados_por_concelho&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">find_next</span><span class="p">(</span><span class="s2">&quot;table&quot;</span><span class="p">)</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;wikitable&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The HTML table is “structured”, albeit not the easiest format to immediately consume: we must turn the rows and the cells into a tabular format. The following code achieves that: it identifies the header rows by the number of cells, builds the header (what will be the first row), and then adds the results of all municipalities for all candidates. The result is a list of dictionaries, one for each municipality.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">header</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">results_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">):</span>
+    <span class="n">votes_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">cells</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">findAll</span><span class="p">([</span><span class="s2">&quot;td&quot;</span><span class="p">,</span> <span class="s2">&quot;th&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+            <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">header</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Votantes&#39;</span><span class="p">)))</span>
+        <span class="c1">#print(row)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cell</span><span class="p">,</span><span class="n">head</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span><span class="n">header</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+            <span class="c1">#print(head + &quot;: &quot;+ t +&quot;.&quot;)</span>
+            <span class="n">votes_dict</span><span class="p">[</span><span class="n">head</span><span class="p">]</span><span class="o">=</span><span class="n">t</span>
+        <span class="n">results_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">votes_dict</span><span class="p">)</span>
+
+<span class="c1">## Show the first entry of the list</span>
+<span class="n">results_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&#39;Concelhos&#39;, &#39;Abrantes&#39;),
+             (&#39;MRS&#39;, &#39;61.34&#39;),
+             (&#39;AG&#39;, &#39;9.63&#39;),
+             (&#39;AV&#39;, &#39;15.13&#39;),
+             (&#39;JF&#39;, &#39;4.76&#39;),
+             (&#39;MM&#39;, &#39;4.72&#39;),
+             (&#39;TMG&#39;, &#39;1.68&#39;),
+             (&#39;VS&#39;, &#39;2.74&#39;),
+             (&#39;Votantes&#39;, &#39;14 896&#39;)])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This format - list of dictionaries - is particularly suited for what we will do next: the creation of a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_list</span><span class="p">)</span>
+<span class="n">res_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Concelhos</th>
+      <th>MRS</th>
+      <th>AG</th>
+      <th>AV</th>
+      <th>JF</th>
+      <th>MM</th>
+      <th>TMG</th>
+      <th>VS</th>
+      <th>Votantes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abrantes</td>
+      <td>61.34</td>
+      <td>9.63</td>
+      <td>15.13</td>
+      <td>4.76</td>
+      <td>4.72</td>
+      <td>1.68</td>
+      <td>2.74</td>
+      <td>14 896</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Águeda</td>
+      <td>67.58</td>
+      <td>9.55</td>
+      <td>11.98</td>
+      <td>2.25</td>
+      <td>3.15</td>
+      <td>2.63</td>
+      <td>2.87</td>
+      <td>16 834</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Aguiar da Beira</td>
+      <td>68.11</td>
+      <td>6.19</td>
+      <td>15.80</td>
+      <td>1.02</td>
+      <td>2.40</td>
+      <td>2.22</td>
+      <td>4.26</td>
+      <td>1 709</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Alandroal</td>
+      <td>59.90</td>
+      <td>6.31</td>
+      <td>16.78</td>
+      <td>11.43</td>
+      <td>2.62</td>
+      <td>1.19</td>
+      <td>1.76</td>
+      <td>1 789</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Albergaria-a-Velha</td>
+      <td>68.93</td>
+      <td>9.10</td>
+      <td>10.97</td>
+      <td>1.96</td>
+      <td>3.43</td>
+      <td>2.35</td>
+      <td>3.26</td>
+      <td>9 365</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Trough trial-and-error there were some aspects of the dataframe that need to be tweaked a tiny bit: remove the space separator from numbers and convert the numeric columns to a numeric type (a <code class="docutils literal notranslate"><span class="pre">float</span></code> for all, although an <code class="docutils literal notranslate"><span class="pre">int</span></code> could be used for the “Votantes” - <em>Voters</em> -  column).</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#res_df[&quot;Concelhos&quot;]=res_df[&quot;Concelhos&quot;].str.upper()</span>
+<span class="n">res_df</span><span class="p">[</span><span class="s2">&quot;Votantes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res_df</span><span class="p">[</span><span class="s2">&quot;Votantes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">repl</span><span class="o">=</span> <span class="n">res_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">res_df</span><span class="p">[</span><span class="n">repl</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span><span class="o">=</span><span class="n">repl</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">res_df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="n">res_df</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Concelhos</th>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>MRS</th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>AG</th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>AV</th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>JF</th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>MM</th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>TMG</th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>VS</th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>Votantes</th>
+      <td>float64</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This dataframe would enable us, by itself, to perform all sorts of interesting analysis, but the focus of this notebook is how to present it in a map - and for that we will use GeoPandas.</p>
+</div>
+<div class="section" id="visualising-data-on-a-map">
+<h2>Visualising data on a map<a class="headerlink" href="#visualising-data-on-a-map" title="Permalink to this headline">¶</a></h2>
+<p>Visualising electoral results is often done through a cloropeth map; for that we need:</p>
+<ul class="simple">
+<li><p><strong>The coordinates of the different areas (in our case, municipalities) we want to represent</strong>: for this we will use a GeoJSON file which is a simplified version of the one made available by the Direcção Geral de Território (<a class="reference external" href="https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/search?facet.q=dataPolicy%2FDados%2520abertos&amp;resultType=details&amp;sortBy=referenceDateOrd&amp;anysnig=CAOP2019&amp;from=1&amp;to=20&amp;fast=index&amp;_content_type=json&amp;type=dataset%2Bor%2Bseries">https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/search?facet.q=dataPolicy/Dados%20abertos&amp;resultType=details&amp;sortBy=referenceDateOrd&amp;anysnig=CAOP2019&amp;from=1&amp;to=20&amp;fast=index&amp;_content_type=json&amp;type=dataset+or+series</a>), which is a good example of providing access to open data using open standards and formats.</p></li>
+<li><p><strong>The data we want to visualise</strong>: we already have this from the previous step.</p></li>
+<li><p>A way to programatically combine the information and display it: for this we will use <strong>GeoPandas</strong> and <strong>geoplot</strong></p></li>
+</ul>
+<p>We start by importing the necessary libraries and setting up some options, and importing the GeoJSON file (that was added to the repository and we can obtain it directly from the URL).</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">geoplot</span></code> it’s very simple to produce a map of the imported boundaries.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">On the partial nature of the maps</p>
+<p>We are using a version of the file that only contains Continental Portugal, since the data for overseas territories is made available using different files which would add a small amount of complexity in processing them; the approach would however be the same.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">geoplot</span>
+<span class="kn">import</span> <span class="nn">pyproj</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">## This might be needed, or not, depending on where the noteook runs</span>
+<span class="n">pyproj</span><span class="o">.</span><span class="n">datadir</span><span class="o">.</span><span class="n">set_data_dir</span><span class="p">(</span><span class="s2">&quot;/usr/local/share/proj&quot;</span><span class="p">)</span>
+<span class="n">geo_file</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/fsmunoz/pt-act-parlamentar/presidenciais2021/concelhos_cont1.json&quot;</span>
+<span class="n">municipality_boundaries</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">geo_file</span><span class="p">)</span>
+<span class="n">geoplot</span><span class="o">.</span><span class="n">polyplot</span><span class="p">(</span><span class="n">municipality_boundaries</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Presidenciais_2021_wiki_13_0.png" src="_images/Presidenciais_2021_wiki_13_0.png" />
+</div>
+</div>
+<p>We now have a map and we have a dataframe with the information we want to visualise: we now combine them into a single <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> object, essentially a regular Pandas dataframe that has a column named <code class="docutils literal notranslate"><span class="pre">geometry</span></code> with the geographic information.</p>
+<p>The GeoJSON file was imported into a GeoDataFrame object already, and we can see that the column <code class="docutils literal notranslate"><span class="pre">NAME_2</span></code> is the one that contains the name of the Municipality:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">municipality_boundaries</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_0</th>
+      <th>ISO</th>
+      <th>NAME_0</th>
+      <th>ID_1</th>
+      <th>NAME_1</th>
+      <th>ID_2</th>
+      <th>NAME_2</th>
+      <th>HASC_2</th>
+      <th>CCN_2</th>
+      <th>CCA_2</th>
+      <th>TYPE_2</th>
+      <th>ENGTYPE_2</th>
+      <th>NL_NAME_2</th>
+      <th>VARNAME_2</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>PT.EV.EV</td>
+      <td>0</td>
+      <td>0705</td>
+      <td>Concelho</td>
+      <td>Municipality</td>
+      <td></td>
+      <td></td>
+      <td>POLYGON ((-7.72069 38.68486, -7.77012 38.75388...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>2</td>
+      <td>Alandroal</td>
+      <td>PT.EV.AL</td>
+      <td>0</td>
+      <td>0701</td>
+      <td>Concelho</td>
+      <td>Municipality</td>
+      <td></td>
+      <td></td>
+      <td>POLYGON ((-7.22761 38.76683, -7.26394 38.77336...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>3</td>
+      <td>Arraiolos</td>
+      <td>PT.EV.AR</td>
+      <td>0</td>
+      <td>0702</td>
+      <td>Concelho</td>
+      <td>Municipality</td>
+      <td></td>
+      <td></td>
+      <td>POLYGON ((-7.78996 38.89579, -7.86466 38.90903...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>4</td>
+      <td>Borba</td>
+      <td>PT.EV.BO</td>
+      <td>0</td>
+      <td>0703</td>
+      <td>Concelho</td>
+      <td>Municipality</td>
+      <td></td>
+      <td></td>
+      <td>POLYGON ((-7.41777 38.86806, -7.42294 38.90348...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>5</td>
+      <td>Estremoz</td>
+      <td>PT.EV.ES</td>
+      <td>0</td>
+      <td>0704</td>
+      <td>Concelho</td>
+      <td>Municipality</td>
+      <td></td>
+      <td></td>
+      <td>POLYGON ((-7.46612 38.92604, -7.45290 38.96442...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>With that we can merge the dataframe we have with the results to it, specifying that the column <code class="docutils literal notranslate"><span class="pre">NAME_2</span></code> in one and <code class="docutils literal notranslate"><span class="pre">Concelhos</span></code> in the other should be matched. The result is a single GeoDataFrame with all the information from both dataframes.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geodata</span> <span class="o">=</span> <span class="n">municipality_boundaries</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">res_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NAME_2&quot;</span><span class="p">],</span> <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Concelhos&quot;</span><span class="p">])</span>
+<span class="n">geodata</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_0</th>
+      <th>ISO</th>
+      <th>NAME_0</th>
+      <th>ID_1</th>
+      <th>NAME_1</th>
+      <th>ID_2</th>
+      <th>NAME_2</th>
+      <th>HASC_2</th>
+      <th>CCN_2</th>
+      <th>CCA_2</th>
+      <th>...</th>
+      <th>geometry</th>
+      <th>Concelhos</th>
+      <th>MRS</th>
+      <th>AG</th>
+      <th>AV</th>
+      <th>JF</th>
+      <th>MM</th>
+      <th>TMG</th>
+      <th>VS</th>
+      <th>Votantes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>PT.EV.EV</td>
+      <td>0</td>
+      <td>0705</td>
+      <td>...</td>
+      <td>POLYGON ((-7.72069 38.68486, -7.77012 38.75388...</td>
+      <td>Évora</td>
+      <td>54.78</td>
+      <td>12.19</td>
+      <td>16.59</td>
+      <td>7.92</td>
+      <td>4.06</td>
+      <td>2.74</td>
+      <td>1.73</td>
+      <td>21847.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>2</td>
+      <td>Alandroal</td>
+      <td>PT.EV.AL</td>
+      <td>0</td>
+      <td>0701</td>
+      <td>...</td>
+      <td>POLYGON ((-7.22761 38.76683, -7.26394 38.77336...</td>
+      <td>Alandroal</td>
+      <td>59.90</td>
+      <td>6.31</td>
+      <td>16.78</td>
+      <td>11.43</td>
+      <td>2.62</td>
+      <td>1.19</td>
+      <td>1.76</td>
+      <td>1789.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>3</td>
+      <td>Arraiolos</td>
+      <td>PT.EV.AR</td>
+      <td>0</td>
+      <td>0702</td>
+      <td>...</td>
+      <td>POLYGON ((-7.78996 38.89579, -7.86466 38.90903...</td>
+      <td>Arraiolos</td>
+      <td>53.37</td>
+      <td>8.64</td>
+      <td>10.99</td>
+      <td>19.12</td>
+      <td>4.60</td>
+      <td>1.31</td>
+      <td>1.97</td>
+      <td>2959.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>4</td>
+      <td>Borba</td>
+      <td>PT.EV.BO</td>
+      <td>0</td>
+      <td>0703</td>
+      <td>...</td>
+      <td>POLYGON ((-7.41777 38.86806, -7.42294 38.90348...</td>
+      <td>Borba</td>
+      <td>57.29</td>
+      <td>9.41</td>
+      <td>18.37</td>
+      <td>7.91</td>
+      <td>3.39</td>
+      <td>1.90</td>
+      <td>1.74</td>
+      <td>2524.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>182</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1</td>
+      <td>Évora</td>
+      <td>5</td>
+      <td>Estremoz</td>
+      <td>PT.EV.ES</td>
+      <td>0</td>
+      <td>0704</td>
+      <td>...</td>
+      <td>POLYGON ((-7.46612 38.92604, -7.45290 38.96442...</td>
+      <td>Estremoz</td>
+      <td>53.22</td>
+      <td>10.46</td>
+      <td>23.32</td>
+      <td>6.73</td>
+      <td>2.93</td>
+      <td>1.52</td>
+      <td>1.83</td>
+      <td>4837.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div></div></div>
+</div>
+<p>We now have the information we need to plot the cloropeth map by specifying the column we want to focus on, like the number of voters in each municipality.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geoplot</span><span class="o">.</span><span class="n">choropleth</span><span class="p">(</span><span class="n">geodata</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">geodata</span><span class="p">[</span><span class="s2">&quot;Votantes&quot;</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;inferno_r&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Number of voters&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Presidenciais_2021_wiki_19_0.png" src="_images/Presidenciais_2021_wiki_19_0.png" />
+</div>
+</div>
+<p>With a bit more work (mostly around setting up the grid and arranging the subplots) we are able to produce a single plot composed of subplots: 7 showing the percentage of each candidate plus a final one with the same information as above.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">## Mostly randomly chosen after assigning the most obvious ones</span>
+<span class="n">cmap_dict</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;MRS&quot;</span><span class="p">:</span> <span class="s2">&quot;Oranges&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;AG&quot;</span><span class="p">:</span> <span class="s2">&quot;pink&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;AV&quot;</span><span class="p">:</span> <span class="s2">&quot;Greys&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;JF&quot;</span><span class="p">:</span> <span class="s2">&quot;Reds&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;MM&quot;</span><span class="p">:</span> <span class="s2">&quot;Purples&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;TMG&quot;</span><span class="p">:</span> <span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;VS&quot;</span><span class="p">:</span> <span class="s2">&quot;Greens&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Votantes&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno_r&quot;</span>
+<span class="p">}</span>
+
+<span class="c1">## 2x4 matrix</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">res_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">haxis</span><span class="o">=</span><span class="mi">0</span>
+        <span class="n">correct</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">haxis</span><span class="o">=</span><span class="mi">1</span>
+        <span class="n">correct</span><span class="o">=</span><span class="mi">4</span>
+    <span class="n">geoplot</span><span class="o">.</span><span class="n">choropleth</span><span class="p">(</span><span class="n">geodata</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">geodata</span><span class="p">[</span><span class="n">candidate</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_dict</span><span class="p">[</span><span class="n">candidate</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">haxis</span><span class="p">][</span><span class="n">a</span><span class="o">-</span><span class="n">correct</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">haxis</span><span class="p">,</span> <span class="n">a</span><span class="o">-</span><span class="n">correct</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>   
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Presidenciais_2021_wiki_21_0.png" src="_images/Presidenciais_2021_wiki_21_0.png" />
+</div>
+</div>
+<p>And that’s it!</p>
+</div>
+<div class="section" id="final-thoughts">
+<h2>Final thoughts<a class="headerlink" href="#final-thoughts" title="Permalink to this headline">¶</a></h2>
+<p>This example is relatively straightforward and can be enhanced in many ways: once we built the main GeoDataFrame it’s easy to come up with additional sources of information that can be added as well, from other sources. Additionally, plots are not limited to cloropeth maps: the dataframe we have built can be used for both geographic visualisation through GeoPandas (and other tools) and as the basis for more quantitative analysis such as analysis of variance,etc.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="met_cluster.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Métodos de <em>clustering</em></p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Frederico Muñoz<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
